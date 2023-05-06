@@ -80,29 +80,26 @@ class Window(QMainWindow):
 
 
         #window controls
-        WindowControls = QToolBar()
-        self.addToolBar(WindowControls)
-        WindowControls.setStyleSheet(f"background-color: {config.toolBarColor}; color: {config.toolBarFontColor};")
         
         self.minimizeBtn = QPushButton()
         self.minimizeBtn.setIcon(QIcon('icons/minimize.png'))
         self.minimizeBtn.clicked.connect(self.showMinimized)
-        WindowControls.addWidget(self.minimizeBtn)
+        toolbar.addWidget(self.minimizeBtn)
 
         self.windowBtn = QPushButton()
         self.windowBtn.setIcon(QIcon('icons/window.png'))
         self.windowBtn.clicked.connect(self.showNormal)
-        WindowControls.addWidget(self.windowBtn)
+        toolbar.addWidget(self.windowBtn)
 
         self.maximizeBtn = QPushButton()
         self.maximizeBtn.setIcon(QIcon('icons/maximize.png'))
         self.maximizeBtn.clicked.connect(self.showMaximized)
-        WindowControls.addWidget(self.maximizeBtn)
+        toolbar.addWidget(self.maximizeBtn)
 
         self.closeBtn = QPushButton()
         self.closeBtn.setIcon(QIcon('icons/exit.png'))
         self.closeBtn.clicked.connect(self.close)
-        WindowControls.addWidget(self.closeBtn)
+        toolbar.addWidget(self.closeBtn)
         
 
 
@@ -138,15 +135,6 @@ class Window(QMainWindow):
     def homeBtn(self):
         self.addressLineEdit.setText(config.initialUrl)
         self.webEngineView.load(QUrl(config.initialUrl))
-
-
-
-
-        
-        
-        
-
-
         
 app = QApplication(sys.argv)
 window = Window()
